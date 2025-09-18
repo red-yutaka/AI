@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RAG Client UI</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="field-group">
+        <label for="endpointUrl">エンドポイントURL</label>
+        <input id="endpointUrl" type="text" value="http://localhost:8000/query" autocomplete="off" />
+      </div>
+      <label class="checkbox-group">
+        <input id="useStreaming" type="checkbox" />
+        <span>ストリーミング (SSE)</span>
+      </label>
+      <label class="checkbox-group">
+        <input id="useMock" type="checkbox" checked />
+        <span>モック応答ON/OFF</span>
+      </label>
+      <button id="clearHistory" type="button">履歴クリア</button>
+    </header>
+
+    <main class="messages" id="messageList" aria-live="polite" aria-label="メッセージ履歴"></main>
+
+    <footer class="app-footer">
+      <label class="field-group textarea-group" for="questionInput">
+        <span>質問</span>
+        <textarea id="questionInput" rows="3" placeholder="質問を入力してください"></textarea>
+      </label>
+      <div class="footer-actions">
+        <button id="sendButton" type="button">送信</button>
+        <div class="status" id="statusText" role="status">待機中</div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
